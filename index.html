@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Medical Office Procedures Quiz</title>
+    <title>Comprehensive Medical Office Procedures Quiz (100 Questions)</title>
     <style>
         :root {
             --bg-color: #fcf4f6;
@@ -38,7 +38,7 @@
             border-radius: 16px;
             box-shadow: var(--shadow);
             width: 100%;
-            max-width: 750px;
+            max-width: 800px;
             padding: 30px;
             border: 2px solid var(--soft-pink);
         }
@@ -114,11 +114,6 @@
         .option-btn:hover:not([disabled]) {
             background-color: var(--hover-pink);
             border-color: var(--primary-pink);
-        }
-
-        .option-btn.selected {
-            border-color: var(--primary-pink);
-            background-color: var(--soft-pink);
         }
 
         .option-btn.correct {
@@ -201,7 +196,7 @@
 <div class="quiz-container" id="quizContainer">
     <header>
         <h1>Medical Office Procedures Quiz</h1>
-        <div class="subtitle">Complete Question Bank (55 Questions Across All Modules)</div>
+        <div class="subtitle">Complete Question Bank (100 Questions Across All Module Presentation Files)</div>
     </header>
 
     <div class="progress-bar-container">
@@ -229,355 +224,115 @@
 
 <script>
     const questions = [
-        // --- Group 7: Telephone Calls & Etiquette ---
-        {
-            question: "Within how many rings should you aim to answer a telephone call in a healthcare setting?",
-            options: ["1 ring", "2-3 rings", "4-5 rings", "6 rings"],
-            answer: 1
-        },
-        {
-            question: "True or False: When transferring a call, you should transfer immediately without providing any explanation to the caller.",
-            options: ["True", "False"],
-            answer: 1
-        },
-        {
-            question: "Which of the following is NOT part of taking a telephone message accurately?",
-            options: ["Caller's name", "Contact information", "Reason for calling", "Caller's medical diagnosis history"],
-            answer: 3
-        },
-        {
-            question: "True or False: In telephone etiquette, you should end the call politely by confirming if there is anything else needed and ending with a thank you.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "What should you do first when dealing with a difficult or upset caller?",
-            options: ["Hang up immediately", "Stay calm and listen carefully", "Interrupt and correct them", "Transfer them to security"],
-            answer: 1
-        },
-        {
-            question: "True or False: It is acceptable to share sensitive patient information over the phone without verifying the caller's identity.",
-            options: ["True", "False"],
-            answer: 1
-        },
-        {
-            question: "If multiple calls come in simultaneously, how should they be handled?",
-            options: ["By caller ID order", "Prioritize according to urgency", "Answer the longest call first", "Ignore secondary calls"],
-            answer: 1
-        },
-        {
-            question: "What is the proper procedure before putting a caller on hold?",
-            options: [
-                "Put them on hold immediately without asking",
-                "Ask for permission and wait for their response before placing them on hold",
-                "Transfer them to voicemail",
-                "Mute your microphone without telling them"
-            ],
-            answer: 1
-        },
-        {
-            question: "True or False: You should always repeat key details such as telephone numbers or appointment dates back to the caller to ensure accuracy.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "When taking a message for a doctor who is currently busy with a patient, what should you tell the caller?",
-            options: [
-                "Give specific details about the patient the doctor is currently seeing",
-                "Politely inform them the doctor is unavailable and offer to take a message or schedule a callback",
-                "Give out the doctor's personal cell phone number",
-                "Tell the caller to visit the office directly"
-            ],
-            answer: 1
-        },
+        // --- GROUP 7: Telephone Calls & Etiquette (Questions 1 - 20) ---
+        { question: "Within how many rings should you aim to answer a telephone call in a healthcare setting?", options: ["1 ring", "2-3 rings", "4-5 rings", "6 rings"], answer: 1 },
+        { question: "True or False: When transferring a call, you should transfer immediately without providing any explanation to the caller.", options: ["True", "False"], answer: 1 },
+        { question: "Which of the following is NOT part of taking a telephone message accurately?", options: ["Caller's name", "Contact information", "Reason for calling", "Caller's medical diagnosis history"], answer: 3 },
+        { question: "True or False: In telephone etiquette, you should end the call politely by confirming if there is anything else needed and ending with a thank you.", options: ["True", "False"], answer: 0 },
+        { question: "What should you do first when dealing with a difficult or upset caller?", options: ["Hang up immediately", "Stay calm and listen carefully", "Interrupt and correct them", "Transfer them to security"], answer: 1 },
+        { question: "True or False: It is acceptable to share sensitive patient information over the phone without verifying the caller's identity.", options: ["True", "False"], answer: 1 },
+        { question: "If multiple calls come in simultaneously, how should they be handled?", options: ["By caller ID order", "Prioritize according to urgency", "Answer the longest call first", "Ignore secondary calls"], answer: 1 },
+        { question: "What is the proper procedure before putting a caller on hold?", options: ["Put them on hold immediately without asking", "Ask for permission and wait for their response before placing them on hold", "Transfer them to voicemail", "Mute your microphone without telling them"], answer: 1 },
+        { question: "True or False: You should always repeat key details such as telephone numbers or appointment dates back to the caller to ensure accuracy.", options: ["True", "False"], answer: 0 },
+        { question: "When taking a message for a doctor who is currently busy with a patient, what should you tell the caller?", options: ["Give specific details about the patient the doctor is currently seeing", "Politely inform them the doctor is unavailable and offer to take a message or schedule a callback", "Give out the doctor's personal cell phone number", "Tell the caller to visit the office directly"], answer: 1 },
+        { question: "When answering an incoming call in a medical office, what should you clearly state immediately after greeting?", options: ["Your salary and shift hours", "Your name and the organization you represent", "The doctor's personal cell phone number", "Your home address"], answer: 1 },
+        { question: "Why is handling phone calls promptly and courteously essential in healthcare settings?", options: ["It eliminates the need for doctor appointments", "Efficiency and professionalism are crucial for patient care and trust", "It generates automatic extra revenue", "It is required for medical licensure exams"], answer: 1 },
+        { question: "When dealing with a frustrated caller, what is the key step after staying calm?", options: ["Argue back until they apologize", "Acknowledge the caller's frustration (empathize) and assure them you'll help", "Put them on permanent hold", "Refuse to take their message"], answer: 1 },
+        { question: "If you are unable to assist a caller with a specific issue, what should you do?", options: ["Tell them to call back next week", "Direct them or transfer them to someone who can help", "Disconnect the line", "Guess the answer"], answer: 1 },
+        { question: "What is a recommended tool for handling common, routine telephone inquiries like appointments or directions?", options: ["A telephone script", "A tape recorder", "An automated chatbot only", "A sticky note pad"], answer: 0 },
+        { question: "Before answering calls, what should you ensure you have readily available at your workstation?", options: ["Your personal lunch box", "Relevant details such as patient names, appointment schedules, or office policies", "Blank paper with no pens", "A medical textbook"], answer: 1 },
+        { question: "When transferring a call to another department, what should you inform the caller?", options: ["Nothing at all", "Who they will be speaking to and a brief explanation of why they are being transferred", "The personal details of the other employee", "That they will have to pay a transfer fee"], answer: 1 },
+        { question: "Why is taking notes during medical telephone calls important?", options: ["To pass time during long calls", "To document important details so vital information is not missed", "To practice shorthand writing", "To submit to local newspapers"], answer: 1 },
+        { question: "When is it acceptable to share sensitive patient information over the phone?", options: ["Whenever any caller asks for it", "Only after the caller's identity and authorization are strictly verified", "When the caller sounds polite", "During lunch hours only"], answer: 1 },
+        { question: "Which textbook is cited as the primary reference for Specialized Medical Office Procedures in Group 7?", options: ["Medical Terminology 101", "Worktext in Specialized Legal, Medical, Technical Office Procedures by Rosemarie R. San Luis", "Hospital Management Manual", "Healthcare Ethics Guide"], answer: 1 },
 
-        // --- Group 8: Meeting Patients & Active Listening ---
-        {
-            question: "What is active listening?",
-            options: [
-                "Listening to music while working",
-                "A technique requiring full concentration, understanding, responding, and remembering",
-                "Hearing background noise without speaking",
-                "Only writing down medical terminology"
-            ],
-            answer: 1
-        },
-        {
-            question: "True or False: Creating a positive first impression helps ease patient anxiety and foster trust.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "Which of the following is a key skill for active listening?",
-            options: ["Interrupting to give quick advice", "Avoiding eye contact", "Paraphrasing what the patient says to confirm understanding", "Multi-tasking on the computer"],
-            answer: 2
-        },
-        {
-            question: "True or False: Using open-ended questions helps establish rapport and lets patients share concerns in their own words.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "Which phrase is an example of encouraging feedback during active listening?",
-            options: ["'Please hurry up'", "'I see' / 'Tell me more'", "'That doesn't matter'", "'I disagree'"],
-            answer: 1
-        },
-        {
-            question: "True or False: Active listening increases the chances of misunderstandings in treatment.",
-            options: ["True", "False"],
-            answer: 1
-        },
-        {
-            question: "Which non-verbal cue indicates attentive active listening?",
-            options: ["Crossing arms tightly", "Maintaining appropriate eye contact and nodding", "Looking at your watch constantly", "Sighing loudly"],
-            answer: 1
-        },
-        {
-            question: "Why is empathy crucial when greeting and communicating with patients in a medical setting?",
-            options: [
-                "It makes appointments shorter",
-                "Patients are often stressed, in pain, or vulnerable, and showing empathy builds trust",
-                "It eliminates the need for written medical records",
-                "It satisfies legal requirement checks"
-            ],
-            answer: 1
-        },
-        {
-            question: "True or False: Paraphrasing involves repeating a patient's statement word-for-word back to them.",
-            options: ["True", "False"],
-            answer: 1
-        },
-        {
-            question: "Which type of question is best used when you need specific, concise facts like a date of birth?",
-            options: ["Open-ended question", "Closed-ended question", "Rhetorical question", "Hypothetical question"],
-            answer: 1
-        },
+        // --- GROUP 8: Meeting the Patient & Active Listening (Questions 21 - 40) ---
+        { question: "What is active listening?", options: ["Listening to music while working", "A technique requiring full concentration, understanding, responding, and remembering", "Hearing background noise without speaking", "Only writing down medical terminology"], answer: 1 },
+        { question: "True or False: Creating a positive first impression helps ease patient anxiety and foster trust.", options: ["True", "False"], answer: 0 },
+        { question: "Which of the following is a key skill for active listening?", options: ["Interrupting to give quick advice", "Avoiding eye contact", "Paraphrasing what the patient says to confirm understanding", "Multi-tasking on the computer"], answer: 2 },
+        { question: "True or False: Using open-ended questions helps establish rapport and lets patients share concerns in their own words.", options: ["True", "False"], answer: 0 },
+        { question: "Which phrase is an example of encouraging feedback during active listening?", options: ["'Please hurry up'", "'I see' / 'Tell me more'", "'That doesn't matter'", "'I disagree'"], answer: 1 },
+        { question: "True or False: Active listening increases the chances of misunderstandings in treatment.", options: ["True", "False"], answer: 1 },
+        { question: "Which non-verbal cue indicates attentive active listening?", options: ["Crossing arms tightly", "Maintaining appropriate eye contact and nodding", "Looking at your watch constantly", "Sighing loudly"], answer: 1 },
+        { question: "Why is empathy crucial when greeting and communicating with patients in a medical setting?", options: ["It makes appointments shorter", "Patients are often stressed, in pain, or vulnerable, and showing empathy builds trust", "It eliminates the need for written medical records", "It satisfies legal requirement checks"], answer: 1 },
+        { question: "True or False: Paraphrasing involves repeating a patient's statement word-for-word back to them.", options: ["True", "False"], answer: 1 },
+        { question: "Which type of question is best used when you need specific, concise facts like a date of birth?", options: ["Open-ended question", "Closed-ended question", "Rhetorical question", "Hypothetical question"], answer: 1 },
+        { question: "How is a 'Patient' defined in the introductory material?", options: ["A customer buying retail products", "A person receiving medical care", "A person visiting a friend", "A person browsing a website"], answer: 1 },
+        { question: "What fundamental element must be ensured during first interactions to respect a patient's personal space and confidential information?", options: ["Publicity", "Privacy", "Broadcasting", "Open discussion"], answer: 1 },
+        { question: "What should a medical administrative staff member do when greeting a patient for the first time?", options: ["Ignore them until they speak first", "Smile, introduce yourself, and ensure the patient feels respected", "Hand them a bill immediately", "Ask them to wait outside"], answer: 1 },
+        { question: "When gathering information from a patient during a meeting, what is the first step?", options: ["Introduce the purpose of the meeting and what will happen", "Take vital signs without speaking", "Ask for payment upfront", "File their charts in the archive"], answer: 0 },
+        { question: "How does active listening directly improve patient outcomes?", options: ["It guarantees instant recovery", "It helps the healthcare provider understand the full scope of concerns and reduces treatment errors", "It replaces clinical diagnosis", "It shortens waiting room times automatically"], answer: 1 },
+        { question: "When practicing active listening, what should you do regarding eye contact?", options: ["Avoid eye contact completely", "Maintain appropriate eye contact to show focus", "Stare continuously without blinking", "Look only at your keyboard"], answer: 1 },
+        { question: "What should you do if a patient is speaking and you need to clarify a point?", options: ["Interrupt immediately mid-sentence", "Let the speaker finish before responding or asking follow-up questions", "Ignore what they said", "Change the subject completely"], answer: 1 },
+        { question: "What does reflective listening/paraphrasing sound like in practice?", options: ["'You are wrong about that'", "'So, what you're saying is...'", "'I don't care'", "'Please repeat that 5 times'"], answer: 1 },
+        { question: "Which demeanor should a medical secretary maintain during patient encounters?", options: ["Calm and confident", "Anxious and hurried", "Aggressive and defensive", "Indifferent and cold"], answer: 0 },
+        { question: "Why is establishing rapport with a patient so important during consultation?", options: ["It encourages them to open up about their concerns in their own words", "It allows the staff to skip taking medical notes", "It speeds up administrative billing", "It makes the doctor arrive faster"], answer: 0 },
 
-        // --- Group 3: Information Security & Reading Skills ---
-        {
-            question: "What are the three main goals of the CIA Triad in information security?",
-            options: [
-                "Control, Intelligence, Action",
-                "Confidentiality, Integrity, Availability",
-                "Computers, Internet, Access",
-                "Code, Identity, Authentication"
-            ],
-            answer: 1
-        },
-        {
-            question: "Which security tool acts as a network guard to monitor and control incoming/outgoing traffic?",
-            options: ["Firewall", "Phishing", "Encryption", "Antivirus"],
-            answer: 0
-        },
-        {
-            question: "True or False: Multi-Factor Authentication (MFA) requires only one single password to verify identity.",
-            options: ["True", "False"],
-            answer: 1
-        },
-        {
-            question: "What security threat refers to a fake email intended to steal information?",
-            options: ["Encryption", "Phishing", "Firewall", "Segmentation"],
-            answer: 1
-        },
-        {
-            question: "Which critical reading component refers to the ability to read with accuracy, appropriate rate, and expression?",
-            options: ["Phonics", "Comprehension", "Fluency", "Phonemic Awareness"],
-            answer: 2
-        },
-        {
-            question: "True or False: Graphic organizers (such as story maps or Venn diagrams) help visualize information and improve comprehension.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "Which reading component connects spoken sounds to letters and letter patterns?",
-            options: ["Phonics", "Vocabulary", "Fluency", "Comprehension"],
-            answer: 0
-        },
-        {
-            question: "In the CIA Triad, ensuring that data is trustworthy and has not been altered improperly refers to:",
-            options: ["Confidentiality", "Integrity", "Availability", "Authentication"],
-            answer: 1
-        },
-        {
-            question: "True or False: Data encryption scrambles readable information so that only authorized users with a key can decode it.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "Which strategy involves a teacher reading aloud while students follow along to build reading fluency and understanding?",
-            options: ["Independent Reading", "Shared Reading", "Silent Reading", "Assessment Reading"],
-            answer: 1
-        },
-        {
-            question: "Which aspect of reading instruction focuses on understanding the meaning of words and expanding word knowledge?",
-            options: ["Phonemic Awareness", "Vocabulary", "Fluency", "Phonics"],
-            answer: 1
-        },
-        {
-            question: "True or False: Data availability means ensuring authorized users have timely and reliable access to information when needed.",
-            options: ["True", "False"],
-            answer: 0
-        },
+        // --- GROUP 3: Information Security & Reading Skills (Questions 41 - 60) ---
+        { question: "What are the three main goals of the CIA Triad in information security?", options: ["Control, Intelligence, Action", "Confidentiality, Integrity, Availability", "Computers, Internet, Access", "Code, Identity, Authentication"], answer: 1 },
+        { question: "Which security tool acts as a network guard to monitor and control incoming/outgoing traffic?", options: ["Firewall", "Phishing", "Encryption", "Antivirus"], answer: 0 },
+        { question: "True or False: Multi-Factor Authentication (MFA) requires only one single password to verify identity.", options: ["True", "False"], answer: 1 },
+        { question: "What security threat refers to a fake email intended to steal information?", options: ["Encryption", "Phishing", "Firewall", "Segmentation"], answer: 1 },
+        { question: "Which critical reading component refers to the ability to read with accuracy, appropriate rate, and expression?", options: ["Phonics", "Comprehension", "Fluency", "Phonemic Awareness"], answer: 2 },
+        { question: "True or False: Graphic organizers (such as story maps or Venn diagrams) help visualize information and improve comprehension.", options: ["True", "False"], answer: 0 },
+        { question: "Which reading component connects spoken sounds to letters and letter patterns?", options: ["Phonics", "Vocabulary", "Fluency", "Comprehension"], answer: 0 },
+        { question: "In the CIA Triad, ensuring that data is trustworthy and has not been altered improperly refers to:", options: ["Confidentiality", "Integrity", "Availability", "Authentication"], answer: 1 },
+        { question: "True or False: Data encryption scrambles readable information so that only authorized users with a key can decode it.", options: ["True", "False"], answer: 0 },
+        { question: "Which strategy involves a teacher reading aloud while students follow along to build reading fluency and understanding?", options: ["Independent Reading", "Shared Reading", "Silent Reading", "Assessment Reading"], answer: 1 },
+        { question: "Which aspect of reading instruction focuses on understanding the meaning of words and expanding word knowledge?", options: ["Phonemic Awareness", "Vocabulary", "Fluency", "Phonics"], answer: 1 },
+        { question: "True or False: Data availability means ensuring authorized users have timely and reliable access to information when needed.", options: ["True", "False"], answer: 0 },
+        { question: "What is Information System Security?", options: ["Cleaning computer screens regularly", "The protection of computers, networks, software, and information from unauthorized access, damage, or misuse", "Purchasing new computer monitors every year", "Storing paper charts in wooden boxes"], answer: 1 },
+        { question: "Which access control method restricts system access strictly based on the user's role within an organization?", options: ["Role-Based Access Control (RBAC)", "Open Access", "Public Key Protocol", "Random Access"], answer: 0 },
+        { question: "What security tool is designed to detect and respond to suspicious activities or breaches in real time?", options: ["Intrusion Detection System (IDS)", "Phishing Email", "Graphic Organizer", "Shared Reading"], answer: 0 },
+        { question: "What is the primary purpose of Network Segmentation?", options: ["To make internet speed faster", "To divide networks into segments to limit the spread of potential breaches", "To delete old medical files", "To connect all computers without passwords"], answer: 1 },
+        { question: "What is Phonemic Awareness in reading instruction?", options: ["Connecting letters to written words", "The ability to hear, identify, and manipulate individual sounds in spoken words", "Reading silently for 30 minutes", "Memorizing vocabulary definitions"], answer: 1 },
+        { question: "What is Comprehension defined as in reading skills?", options: ["The ability to speak loudly", "The ability to understand, interpret, and make meaning from text", "Decoding letter patterns only", "Typing quickly without errors"], answer: 1 },
+        { question: "What technique involves small groups working with a teacher to focus on specific reading strategies?", options: ["Guided Reading", "Phishing Audit", "Firewall Analysis", "Data Backup"], answer: 0 },
+        { question: "Why is Patch Management critical in software security?", options: ["It changes the font color of software", "It regularly updates software and systems to fix vulnerabilities and improve security", "It deletes all user passwords", "It disables antivirus software"], answer: 1 },
 
-        // --- Group 2 & Group 6: Information Systems & Data ---
-        {
-            question: "What is 'Information'?",
-            options: [
-                "Unorganized random facts",
-                "Data that has been processed or organized to provide meaning",
-                "Only numerical values",
-                "Software applications"
-            ],
-            answer: 1
-        },
-        {
-            question: "True or False: Transaction Processing Systems (TPS) are used to handle day-to-day business transactions.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "Which type of Information System integrates various business processes into a unified system?",
-            options: ["MIS", "ERP (Enterprise Resource Planning)", "TPS", "DSS"],
-            answer: 1
-        },
-        {
-            question: "Which component of an Information System refers to physical devices like computers and servers?",
-            options: ["Software", "Procedures", "Hardware", "Data"],
-            answer: 2
-        },
-        {
-            question: "True or False: CRM systems are specifically used to manage interactions and data related to customers.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "How do offices use information for 'Planning and Strategy'?",
-            options: [
-                "To clean physical hardware",
-                "To develop strategies, set goals, and allocate resources efficiently",
-                "To write medical prescriptions",
-                "To answer telephone calls faster"
-            ],
-            answer: 1
-        },
-        {
-            question: "Which system aids managers in complex decision-making and problem-solving?",
-            options: ["Decision Support Systems (DSS)", "Hardware Systems", "Phishing Systems", "Shared Reading Systems"],
-            answer: 0
-        },
-        {
-            question: "What is 'Data' before it is processed?",
-            options: [
-                "Finished medical reports",
-                "Raw facts, figures, and unorganized symbols",
-                "Executive decision summaries",
-                "Structured databases"
-            ],
-            answer: 1
-        },
-        {
-            question: "True or False: Executive Support Systems (ESS) are designed to assist top-level executives with long-term strategic decisions.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "Which IS component consists of the instructions, programs, and operating systems that tell hardware what to do?",
-            options: ["Data", "Hardware", "Software", "Networks"],
-            answer: 2
-        },
-        {
-            question: "Management Information Systems (MIS) primarily generate reports for which organizational level?",
-            options: ["Frontline customers", "Middle management", "External auditors", "IT technicians only"],
-            answer: 1
-        },
-        {
-            question: "True or False: Procedures in an Information System refer to the rules, policies, and instructions for using the system.",
-            options: ["True", "False"],
-            answer: 0
-        },
+        // --- GROUP 2 & GROUP 6: Information Systems & Data (Questions 61 - 80) ---
+        { question: "What is 'Information'?", options: ["Unorganized random facts", "Data that has been processed or organized to provide meaning", "Only numerical values", "Software applications"], answer: 1 },
+        { question: "True or False: Transaction Processing Systems (TPS) are used to handle day-to-day business transactions.", options: ["True", "False"], answer: 0 },
+        { question: "Which type of Information System integrates various business processes into a unified system?", options: ["MIS", "ERP (Enterprise Resource Planning)", "TPS", "DSS"], answer: 1 },
+        { question: "Which component of an Information System refers to physical devices like computers and servers?", options: ["Software", "Procedures", "Hardware", "Data"], answer: 2 },
+        { question: "True or False: CRM systems are specifically used to manage interactions and data related to customers.", options: ["True", "False"], answer: 0 },
+        { question: "How do offices use information for 'Planning and Strategy'?", options: ["To clean physical hardware", "To develop strategies, set goals, and allocate resources efficiently", "To write medical prescriptions", "To answer telephone calls faster"], answer: 1 },
+        { question: "Which system aids managers in complex decision-making and problem-solving?", options: ["Decision Support Systems (DSS)", "Hardware Systems", "Phishing Systems", "Shared Reading Systems"], answer: 0 },
+        { question: "What is 'Data' before it is processed?", options: ["Finished medical reports", "Raw facts, figures, and unorganized symbols", "Executive decision summaries", "Structured databases"], answer: 1 },
+        { question: "True or False: Executive Support Systems (ESS) or Management Information Systems (MIS) help provide reports for managerial decisions.", options: ["True", "False"], answer: 0 },
+        { question: "Which IS component consists of the instructions, programs, and operating systems that tell hardware what to do?", options: ["Data", "Hardware", "Software", "Networks"], answer: 2 },
+        { question: "Management Information Systems (MIS) primarily generate reports for which organizational level?", options: ["Frontline customers", "Middle management / Managers", "External auditors", "IT technicians only"], answer: 1 },
+        { question: "True or False: Procedures in an Information System refer to the rules, policies, and instructions for using the system.", options: ["True", "False"], answer: 0 },
+        { question: "How does information facilitate effective communication in an office?", options: ["By allowing employees, departments, and external stakeholders to exchange accurate data", "By sending random emails", "By deleting paper records", "By slowing down workflow"], answer: 0 },
+        { question: "Why do offices use information for 'Compliance and Reporting'?", options: ["To ensure adherence to regulations and maintain transparency with stakeholders", "To hide financial records", "To avoid hiring staff", "To clean office servers"], answer: 0 },
+        { question: "How is Customer/Client Information used for 'Personalization'?", options: ["To charge different prices randomly", "To tailor products, services, and marketing to individual preferences", "To publish patient records online", "To send unsolicited spam"], answer: 1 },
+        { question: "What is the role of 'Market Research' using customer data?", options: ["To guess what patients want", "To gain insights into market trends, customer needs, and competitive analysis", "To manufacture hardware devices", "To design office furniture"], answer: 1 },
+        { question: "How do customer feedback mechanisms improve business operations?", options: ["They allow companies to improve products/services and enhance customer satisfaction", "They replace all administrative employees", "They increase system errors", "They eliminate software updates"], answer: 0 },
+        { question: "What IS component includes the end-users, IT staff, and managers who interact with the system?", options: ["Procedures", "Software", "People", "Hardware"], answer: 2 },
+        { question: "Which system processes routine everyday transactions such as billing or order processing?", options: ["Transaction Processing Systems (TPS)", "Decision Support Systems (DSS)", "Phonics Systems", "Firewall Systems"], answer: 0 },
+        { question: "Analysing customer demographics and behavior to design targeted campaigns is known as:", options: ["Targeted Marketing", "Phishing", "Guided Reading", "Data Backup"], answer: 0 },
 
-        // --- Group 1 & Group 5: Medical Office & Medical Secretary ---
-        {
-            question: "A medical office is a workplace where a physician provides medical services to:",
-            options: ["Customers", "Patients", "Clients", "Students"],
-            answer: 1
-        },
-        {
-            question: "True or False: A medical secretary can only work inside a doctor's private office.",
-            options: ["True", "False"],
-            answer: 1
-        },
-        {
-            question: "Which quality refers to knowing how to speak and act appropriately, especially in difficult situations?",
-            options: ["Punctuality", "Tact", "Thoroughness", "Accuracy"],
-            answer: 1
-        },
-        {
-            question: "Why are personal qualities like kindness and sympathy vital for a medical secretary?",
-            options: [
-                "Because they deal with patients who may be sick, worried, or uncomfortable",
-                "Because it is required by law",
-                "To complete paperwork faster",
-                "To operate computer hardware"
-            ],
-            answer: 0
-        },
-        {
-            question: "True or False: Preparing written documents from medical dictation or recorded information is called Medical Transcription.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "Which workplace opportunity allows experienced medical secretaries to share their skills with prospective secretaries?",
-            options: ["Teaching / Training", "Freelance Coding", "Hardware Assembly", "Phishing Audit"],
-            answer: 0
-        },
-        {
-            question: "Arriving on time and preparing the office, records, and equipment before the doctor sees patients displays:",
-            options: ["Tact", "Punctuality", "Confidentiality", "Fluency"],
-            answer: 1
-        },
-        {
-            question: "True or False: Medical secretaries working in business can assist companies that manufacture medicines or hospital supplies.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "Which settings outside private clinics can medical secretaries work in?",
-            options: [
-                "Hospitals and medical centers",
-                "Research laboratories and insurance companies",
-                "Government health departments",
-                "All of the above"
-            ],
-            answer: 3
-        },
-        {
-            question: "Which administrative task is a core responsibility of a medical secretary?",
-            options: [
-                "Performing surgical operations",
-                "Scheduling patient appointments and managing medical records",
-                "Prescribing medication",
-                "Diagnosing patient illnesses"
-            ],
-            answer: 1
-        },
-        {
-            question: "True or False: Professional discretion means keeping all patient medical records and personal information confidential.",
-            options: ["True", "False"],
-            answer: 0
-        },
-        {
-            question: "What quality is essential for managing office inventory, filing patient charts, and maintaining schedules without errors?",
-            options: ["Organizational skills", "Physical strength", "Medical diagnosis skills", "Public speaking"],
-            answer: 0
-        },
-        {
-            question: "True or False: Medical secretaries in research facilities may assist in compiling and organizing clinical study data.",
-            options: ["True", "False"],
-            answer: 0
-        }
+        // --- GROUP 1 & GROUP 5: Medical Office & Medical Secretary (Questions 81 - 100) ---
+        { question: "A medical office is a workplace where a physician provides medical services to:", options: ["Customers", "Patients", "Clients", "Students"], answer: 1 },
+        { question: "True or False: A medical secretary can only work inside a doctor's private office.", options: ["True", "False"], answer: 1 },
+        { question: "Which quality refers to knowing how to speak and act appropriately, especially in difficult situations?", options: ["Punctuality", "Tact", "Thoroughness", "Accuracy"], answer: 1 },
+        { question: "Why are personal qualities like kindness and sympathy vital for a medical secretary?", options: ["Because they deal with patients who may be sick, worried, or uncomfortable", "Because it is required by law", "To complete paperwork faster", "To operate computer hardware"], answer: 0 },
+        { question: "True or False: Preparing written documents from medical dictation or recorded information is called Medical Transcription.", options: ["True", "False"], answer: 0 },
+        { question: "Which workplace opportunity allows experienced medical secretaries to share their skills with prospective secretaries?", options: ["Teaching / Training", "Freelance Coding", "Hardware Assembly", "Phishing Audit"], answer: 0 },
+        { question: "Arriving on time and preparing the office, records, and equipment before the doctor sees patients displays:", options: ["Tact", "Punctuality", "Confidentiality", "Fluency"], answer: 1 },
+        { question: "True or False: Medical secretaries working in business can assist companies that manufacture medicines or hospital supplies.", options: ["True", "False"], answer: 0 },
+        { question: "Which settings outside private clinics can medical secretaries work in?", options: ["Hospitals and medical centers", "Research laboratories and insurance companies", "Government health departments", "All of the above"], answer: 3 },
+        { question: "Which administrative task is a core responsibility of a medical secretary?", options: ["Performing surgical operations", "Scheduling patient appointments and managing medical records", "Prescribing medication", "Diagnosing patient illnesses"], answer: 1 },
+        { question: "True or False: Professional discretion means keeping all patient medical records and personal information confidential.", options: ["True", "False"], answer: 0 },
+        { question: "What quality is essential for managing office inventory, filing patient charts, and maintaining schedules without errors?", options: ["Organizational skills / Thoroughness", "Physical strength", "Medical diagnosis skills", "Public speaking"], answer: 0 },
+        { question: "True or False: Medical secretaries in research facilities may assist in compiling and organizing clinical study data.", options: ["True", "False"], answer: 0 },
+        { question: "Who are the key people that typically make up a medical office team?", options: ["Physicians, healthcare professionals, patients, and administrative/clerical staff", "Software developers only", "External auditors only", "Sales representatives only"], answer: 0 },
+        { question: "Which type of medical office provides non-emergency, primary care, or urgent walk-in services?", options: ["Primary Care Offices and Urgent Care Centers", "Armed Forces Headquarters", "Research Chemical Labs", "Software Companies"], answer: 0 },
+        { question: "Knowledge of medical terminology helps medical secretaries in the business world to:", options: ["Understand medicines, surgical instruments, and products when communicating with healthcare professionals", "Perform surgery on patients", "Fix broken office computers", "Build medical hardware"], answer: 0 },
+        { question: "Medical secretaries working in Public Health Departments usually assist with:", options: ["Government health administration, records, and office coordination", "Selling pharmaceutical products directly", "Designing hospital buildings", "Operating diagnostic machinery"], answer: 0 },
+        { question: "Medical secretaries with strong writing skills can work independently as:", options: ["Medical editorial assistants or freelance writers", "Surgeons", "Pharmacists", "Hardware technicians"], answer: 0 },
+        { question: "Why is Accuracy and Dependability critical for a medical secretary?", options: ["Because mistakes in a medical office can have serious consequences for patient health", "To impress the office receptionist", "Because computers do not work without it", "To reduce phone call duration"], answer: 0 },
+        { question: "Paying close attention to details and checking important information carefully describes which quality?", options: ["Thoroughness", "Speed", "Volume", "Strictness"], answer: 0 }
     ];
 
     let currentQuestionIndex = 0;
