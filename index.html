@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Medical Office Procedures Quiz</title>
+    <style>
+        :root {
+            --bg-color: #fcf4f6;
+            --card-bg: #ffffff;
+            --primary-pink: #d87093;
+            --soft-pink: #f8dbed;
+            --hover-pink: #f0c2dd;
+            --dark-pink: #8b4513;
+            --text-dark: #4a3b40;
+            --text-muted: #7a6b70;
+            --correct-bg: #d4edda;
+            --correct-border: #c3e6cb;
+            --incorrect-bg: #f8d7da;
+            --incorrect-border: #f5c6cb;
+            --shadow: 0 4px 15px rgba(216, 112, 147, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .quiz-container {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 750px;
+            padding: 30px;
+            border: 2px solid var(--soft-pink);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--soft-pink);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: var(--primary-pink);
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: var(--soft-pink);
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-pink);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-number {
+            font-weight: 600;
+            color: var(--primary-pink);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background-color: #fff;
+            border: 2px solid var(--soft-pink);
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover:not([disabled]) {
+            background-color: var(--hover-pink);
+            border-color: var(--primary-pink);
+        }
+
+        .option-btn.selected {
+            border-color: var(--primary-pink);
+            background-color: var(--soft-pink);
+        }
+
+        .option-btn.correct {
+            background-color: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: #155724;
+            font-weight: 600;
+        }
+
+        .option-btn.incorrect {
+            background-color: var(--incorrect-bg) !important;
+            border-color: var(--incorrect-border) !important;
+            color: #721c24;
+        }
+
+        .footer {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-next {
+            background-color: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-next:hover {
+            background-color: #c2597d;
+        }
+
+        .btn-next:disabled {
+            background-color: #e0b0bc;
+            cursor: not-allowed;
+        }
+
+        .score-container {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .score-title {
+            font-size: 2rem;
+            color: var(--primary-pink);
+            margin-bottom: 15px;
+        }
+
+        .score-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .restart-btn {
+            background-color: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .restart-btn:hover {
+            background-color: #c2597d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container" id="quizContainer">
+    <header>
+        <h1>Medical Office Procedures Quiz</h1>
+        <div class="subtitle">Complete Question Bank (55 Questions Across All Modules)</div>
+    </header>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="quizBody">
+        <div class="question-number" id="questionNumber">Question 1</div>
+        <div class="question-text" id="questionText">Question content goes here...</div>
+        <div class="options-container" id="optionsContainer"></div>
+
+        <div class="footer">
+            <span id="scoreTracker" style="color: var(--text-muted); font-size: 0.9rem;"></span>
+            <button class="btn-next" id="nextBtn" onclick="nextQuestion()" disabled>Next Question</button>
+        </div>
+    </div>
+
+    <div id="resultBody" class="score-container" style="display: none;">
+        <div class="score-title">Quiz Completed!</div>
+        <div class="score-number" id="finalScore">0 / 0</div>
+        <p id="scoreFeedback" style="color: var(--text-muted); margin-bottom: 30px;"></p>
+        <button class="restart-btn" onclick="restartQuiz()">Try Again</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        // --- Group 7: Telephone Calls & Etiquette ---
+        {
+            question: "Within how many rings should you aim to answer a telephone call in a healthcare setting?",
+            options: ["1 ring", "2-3 rings", "4-5 rings", "6 rings"],
+            answer: 1
+        },
+        {
+            question: "True or False: When transferring a call, you should transfer immediately without providing any explanation to the caller.",
+            options: ["True", "False"],
+            answer: 1
+        },
+        {
+            question: "Which of the following is NOT part of taking a telephone message accurately?",
+            options: ["Caller's name", "Contact information", "Reason for calling", "Caller's medical diagnosis history"],
+            answer: 3
+        },
+        {
+            question: "True or False: In telephone etiquette, you should end the call politely by confirming if there is anything else needed and ending with a thank you.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "What should you do first when dealing with a difficult or upset caller?",
+            options: ["Hang up immediately", "Stay calm and listen carefully", "Interrupt and correct them", "Transfer them to security"],
+            answer: 1
+        },
+        {
+            question: "True or False: It is acceptable to share sensitive patient information over the phone without verifying the caller's identity.",
+            options: ["True", "False"],
+            answer: 1
+        },
+        {
+            question: "If multiple calls come in simultaneously, how should they be handled?",
+            options: ["By caller ID order", "Prioritize according to urgency", "Answer the longest call first", "Ignore secondary calls"],
+            answer: 1
+        },
+        {
+            question: "What is the proper procedure before putting a caller on hold?",
+            options: [
+                "Put them on hold immediately without asking",
+                "Ask for permission and wait for their response before placing them on hold",
+                "Transfer them to voicemail",
+                "Mute your microphone without telling them"
+            ],
+            answer: 1
+        },
+        {
+            question: "True or False: You should always repeat key details such as telephone numbers or appointment dates back to the caller to ensure accuracy.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "When taking a message for a doctor who is currently busy with a patient, what should you tell the caller?",
+            options: [
+                "Give specific details about the patient the doctor is currently seeing",
+                "Politely inform them the doctor is unavailable and offer to take a message or schedule a callback",
+                "Give out the doctor's personal cell phone number",
+                "Tell the caller to visit the office directly"
+            ],
+            answer: 1
+        },
+
+        // --- Group 8: Meeting Patients & Active Listening ---
+        {
+            question: "What is active listening?",
+            options: [
+                "Listening to music while working",
+                "A technique requiring full concentration, understanding, responding, and remembering",
+                "Hearing background noise without speaking",
+                "Only writing down medical terminology"
+            ],
+            answer: 1
+        },
+        {
+            question: "True or False: Creating a positive first impression helps ease patient anxiety and foster trust.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "Which of the following is a key skill for active listening?",
+            options: ["Interrupting to give quick advice", "Avoiding eye contact", "Paraphrasing what the patient says to confirm understanding", "Multi-tasking on the computer"],
+            answer: 2
+        },
+        {
+            question: "True or False: Using open-ended questions helps establish rapport and lets patients share concerns in their own words.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "Which phrase is an example of encouraging feedback during active listening?",
+            options: ["'Please hurry up'", "'I see' / 'Tell me more'", "'That doesn't matter'", "'I disagree'"],
+            answer: 1
+        },
+        {
+            question: "True or False: Active listening increases the chances of misunderstandings in treatment.",
+            options: ["True", "False"],
+            answer: 1
+        },
+        {
+            question: "Which non-verbal cue indicates attentive active listening?",
+            options: ["Crossing arms tightly", "Maintaining appropriate eye contact and nodding", "Looking at your watch constantly", "Sighing loudly"],
+            answer: 1
+        },
+        {
+            question: "Why is empathy crucial when greeting and communicating with patients in a medical setting?",
+            options: [
+                "It makes appointments shorter",
+                "Patients are often stressed, in pain, or vulnerable, and showing empathy builds trust",
+                "It eliminates the need for written medical records",
+                "It satisfies legal requirement checks"
+            ],
+            answer: 1
+        },
+        {
+            question: "True or False: Paraphrasing involves repeating a patient's statement word-for-word back to them.",
+            options: ["True", "False"],
+            answer: 1
+        },
+        {
+            question: "Which type of question is best used when you need specific, concise facts like a date of birth?",
+            options: ["Open-ended question", "Closed-ended question", "Rhetorical question", "Hypothetical question"],
+            answer: 1
+        },
+
+        // --- Group 3: Information Security & Reading Skills ---
+        {
+            question: "What are the three main goals of the CIA Triad in information security?",
+            options: [
+                "Control, Intelligence, Action",
+                "Confidentiality, Integrity, Availability",
+                "Computers, Internet, Access",
+                "Code, Identity, Authentication"
+            ],
+            answer: 1
+        },
+        {
+            question: "Which security tool acts as a network guard to monitor and control incoming/outgoing traffic?",
+            options: ["Firewall", "Phishing", "Encryption", "Antivirus"],
+            answer: 0
+        },
+        {
+            question: "True or False: Multi-Factor Authentication (MFA) requires only one single password to verify identity.",
+            options: ["True", "False"],
+            answer: 1
+        },
+        {
+            question: "What security threat refers to a fake email intended to steal information?",
+            options: ["Encryption", "Phishing", "Firewall", "Segmentation"],
+            answer: 1
+        },
+        {
+            question: "Which critical reading component refers to the ability to read with accuracy, appropriate rate, and expression?",
+            options: ["Phonics", "Comprehension", "Fluency", "Phonemic Awareness"],
+            answer: 2
+        },
+        {
+            question: "True or False: Graphic organizers (such as story maps or Venn diagrams) help visualize information and improve comprehension.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "Which reading component connects spoken sounds to letters and letter patterns?",
+            options: ["Phonics", "Vocabulary", "Fluency", "Comprehension"],
+            answer: 0
+        },
+        {
+            question: "In the CIA Triad, ensuring that data is trustworthy and has not been altered improperly refers to:",
+            options: ["Confidentiality", "Integrity", "Availability", "Authentication"],
+            answer: 1
+        },
+        {
+            question: "True or False: Data encryption scrambles readable information so that only authorized users with a key can decode it.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "Which strategy involves a teacher reading aloud while students follow along to build reading fluency and understanding?",
+            options: ["Independent Reading", "Shared Reading", "Silent Reading", "Assessment Reading"],
+            answer: 1
+        },
+        {
+            question: "Which aspect of reading instruction focuses on understanding the meaning of words and expanding word knowledge?",
+            options: ["Phonemic Awareness", "Vocabulary", "Fluency", "Phonics"],
+            answer: 1
+        },
+        {
+            question: "True or False: Data availability means ensuring authorized users have timely and reliable access to information when needed.",
+            options: ["True", "False"],
+            answer: 0
+        },
+
+        // --- Group 2 & Group 6: Information Systems & Data ---
+        {
+            question: "What is 'Information'?",
+            options: [
+                "Unorganized random facts",
+                "Data that has been processed or organized to provide meaning",
+                "Only numerical values",
+                "Software applications"
+            ],
+            answer: 1
+        },
+        {
+            question: "True or False: Transaction Processing Systems (TPS) are used to handle day-to-day business transactions.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "Which type of Information System integrates various business processes into a unified system?",
+            options: ["MIS", "ERP (Enterprise Resource Planning)", "TPS", "DSS"],
+            answer: 1
+        },
+        {
+            question: "Which component of an Information System refers to physical devices like computers and servers?",
+            options: ["Software", "Procedures", "Hardware", "Data"],
+            answer: 2
+        },
+        {
+            question: "True or False: CRM systems are specifically used to manage interactions and data related to customers.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "How do offices use information for 'Planning and Strategy'?",
+            options: [
+                "To clean physical hardware",
+                "To develop strategies, set goals, and allocate resources efficiently",
+                "To write medical prescriptions",
+                "To answer telephone calls faster"
+            ],
+            answer: 1
+        },
+        {
+            question: "Which system aids managers in complex decision-making and problem-solving?",
+            options: ["Decision Support Systems (DSS)", "Hardware Systems", "Phishing Systems", "Shared Reading Systems"],
+            answer: 0
+        },
+        {
+            question: "What is 'Data' before it is processed?",
+            options: [
+                "Finished medical reports",
+                "Raw facts, figures, and unorganized symbols",
+                "Executive decision summaries",
+                "Structured databases"
+            ],
+            answer: 1
+        },
+        {
+            question: "True or False: Executive Support Systems (ESS) are designed to assist top-level executives with long-term strategic decisions.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "Which IS component consists of the instructions, programs, and operating systems that tell hardware what to do?",
+            options: ["Data", "Hardware", "Software", "Networks"],
+            answer: 2
+        },
+        {
+            question: "Management Information Systems (MIS) primarily generate reports for which organizational level?",
+            options: ["Frontline customers", "Middle management", "External auditors", "IT technicians only"],
+            answer: 1
+        },
+        {
+            question: "True or False: Procedures in an Information System refer to the rules, policies, and instructions for using the system.",
+            options: ["True", "False"],
+            answer: 0
+        },
+
+        // --- Group 1 & Group 5: Medical Office & Medical Secretary ---
+        {
+            question: "A medical office is a workplace where a physician provides medical services to:",
+            options: ["Customers", "Patients", "Clients", "Students"],
+            answer: 1
+        },
+        {
+            question: "True or False: A medical secretary can only work inside a doctor's private office.",
+            options: ["True", "False"],
+            answer: 1
+        },
+        {
+            question: "Which quality refers to knowing how to speak and act appropriately, especially in difficult situations?",
+            options: ["Punctuality", "Tact", "Thoroughness", "Accuracy"],
+            answer: 1
+        },
+        {
+            question: "Why are personal qualities like kindness and sympathy vital for a medical secretary?",
+            options: [
+                "Because they deal with patients who may be sick, worried, or uncomfortable",
+                "Because it is required by law",
+                "To complete paperwork faster",
+                "To operate computer hardware"
+            ],
+            answer: 0
+        },
+        {
+            question: "True or False: Preparing written documents from medical dictation or recorded information is called Medical Transcription.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "Which workplace opportunity allows experienced medical secretaries to share their skills with prospective secretaries?",
+            options: ["Teaching / Training", "Freelance Coding", "Hardware Assembly", "Phishing Audit"],
+            answer: 0
+        },
+        {
+            question: "Arriving on time and preparing the office, records, and equipment before the doctor sees patients displays:",
+            options: ["Tact", "Punctuality", "Confidentiality", "Fluency"],
+            answer: 1
+        },
+        {
+            question: "True or False: Medical secretaries working in business can assist companies that manufacture medicines or hospital supplies.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "Which settings outside private clinics can medical secretaries work in?",
+            options: [
+                "Hospitals and medical centers",
+                "Research laboratories and insurance companies",
+                "Government health departments",
+                "All of the above"
+            ],
+            answer: 3
+        },
+        {
+            question: "Which administrative task is a core responsibility of a medical secretary?",
+            options: [
+                "Performing surgical operations",
+                "Scheduling patient appointments and managing medical records",
+                "Prescribing medication",
+                "Diagnosing patient illnesses"
+            ],
+            answer: 1
+        },
+        {
+            question: "True or False: Professional discretion means keeping all patient medical records and personal information confidential.",
+            options: ["True", "False"],
+            answer: 0
+        },
+        {
+            question: "What quality is essential for managing office inventory, filing patient charts, and maintaining schedules without errors?",
+            options: ["Organizational skills", "Physical strength", "Medical diagnosis skills", "Public speaking"],
+            answer: 0
+        },
+        {
+            question: "True or False: Medical secretaries in research facilities may assist in compiling and organizing clinical study data.",
+            options: ["True", "False"],
+            answer: 0
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let selectedOption = null;
+
+    const questionNumberEl = document.getElementById("questionNumber");
+    const questionTextEl = document.getElementById("questionText");
+    const optionsContainerEl = document.getElementById("optionsContainer");
+    const nextBtn = document.getElementById("nextBtn");
+    const progressBar = document.getElementById("progressBar");
+    const scoreTracker = document.getElementById("scoreTracker");
+
+    function loadQuestion() {
+        const q = questions[currentQuestionIndex];
+        selectedOption = null;
+        nextBtn.disabled = true;
+
+        questionNumberEl.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+        questionTextEl.textContent = q.question;
+        scoreTracker.textContent = `Score: ${score}`;
+
+        // Update progress bar
+        const progressPct = ((currentQuestionIndex) / questions.length) * 100;
+        progressBar.style.width = `${progressPct}%`;
+
+        optionsContainerEl.innerHTML = "";
+        q.options.forEach((opt, idx) => {
+            const btn = document.createElement("button");
+            btn.className = "option-btn";
+            btn.textContent = opt;
+            btn.onclick = () => selectOption(idx, btn);
+            optionsContainerEl.appendChild(btn);
+        });
+    }
+
+    function selectOption(index, button) {
+        if (selectedOption !== null) return; // Prevent changing choice
+
+        selectedOption = index;
+        const q = questions[currentQuestionIndex];
+        const buttons = optionsContainerEl.querySelectorAll(".option-btn");
+
+        buttons.forEach((btn, idx) => {
+            btn.disabled = true;
+            if (idx === q.answer) {
+                btn.classList.add("correct");
+            } else if (idx === index) {
+                btn.classList.add("incorrect");
+            }
+        });
+
+        if (index === q.answer) {
+            score++;
+            scoreTracker.textContent = `Score: ${score}`;
+        }
+
+        nextBtn.disabled = false;
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            loadQuestion();
+        } else {
+            showResults();
+        }
+    }
+
+    function showResults() {
+        document.getElementById("quizBody").style.display = "none";
+        document.getElementById("resultBody").style.display = "block";
+        progressBar.style.width = "100%";
+
+        const finalScoreEl = document.getElementById("finalScore");
+        const feedbackEl = document.getElementById("scoreFeedback");
+
+        finalScoreEl.textContent = `${score} / ${questions.length}`;
+
+        const percentage = (score / questions.length) * 100;
+        if (percentage >= 85) {
+            feedbackEl.textContent = "Outstanding performance! You have thoroughly mastered all course topics!";
+        } else if (percentage >= 70) {
+            feedbackEl.textContent = "Great job! You have a strong grasp of the material.";
+        } else if (percentage >= 50) {
+            feedbackEl.textContent = "Fair effort! Review the lesson presentations to strengthen your weak areas.";
+        } else {
+            feedbackEl.textContent = "Keep practicing! Carefully review the presentation files and try again.";
+        }
+    }
+
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.getElementById("quizBody").style.display = "block";
+        document.getElementById("resultBody").style.display = "none";
+        loadQuestion();
+    }
+
+    // Initialize Quiz
+    loadQuestion();
+</script>
+
+</body>
+</html>
